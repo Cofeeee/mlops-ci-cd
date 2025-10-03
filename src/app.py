@@ -8,6 +8,7 @@ import logging
 import subprocess
 
 # Настройка логирования
+# И случайного коментария
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 

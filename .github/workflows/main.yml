@@ -13,7 +13,7 @@ permissions:
 env:
   PYTHONPATH: ${{ github.workspace }}
   MODEL_PATH: src/models/model.joblib
-  DOCKER_IMAGE: ghcr.io/lyalkid/mlops-ci-cd
+  DOCKER_IMAGE: ghcr.io/${{ github.repository_owner }}/mlops-ci-cd
 
 jobs:
   build-and-test:
@@ -76,7 +76,7 @@ jobs:
           path: src/models
 
       - name: 🐳 Build Docker image
-        run: docker build -t ${{ env.DOCKER_IMAGE }} .
+        run: docker build -t ${{ env.DOCKER_IMAGE }}:latest .
 
       - name: 🔐 Login to GitHub Container Registry
         uses: docker/login-action@v3
@@ -90,7 +90,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/lyalkid/mlops-ci-cd:latest
+          tags: ${{ env.DOCKER_IMAGE }}:latest
 
   deploy-to-yc:
     needs: build-and-test

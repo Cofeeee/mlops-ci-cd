@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 from pathlib import Path
 # Изменено с относительного на абсолютный импорт
-from src.data_loader import load_sample_data
+from data_loader import load_sample_data
 
 
 # Настройка путей

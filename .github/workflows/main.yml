@@ -13,7 +13,7 @@ permissions:
 env:
   PYTHONPATH: ${{ github.workspace }}
   MODEL_PATH: src/models/model.joblib
-  DOCKER_IMAGE: ghcr.io/${{ github.repository_owner }}/mlops-ci-cd
+  DOCKER_IMAGE: ghcr.io/${{ github.repository_owner | toLower }}"/mlops-ci-cd
 
 jobs:
   build-and-test:
